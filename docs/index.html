@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Ranking the Japanese players for the</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" type="image/jpg" href="favicon.jpg">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div id="app">
+            <h1 id="title">Ranking the Japanese players for the</h1>
+            <div class="row">
+                <div class="col-sm-6">
+                    <button @click="loadCharacters" class="btn btn-default"><i class="glyphicon glyphicon-user"></i> Characters</button>
+                    <button @click="loadCorporations" class="btn btn-default"><i class="glyphicon glyphicon-tower"></i> Corporations</button>
+                    <button @click="loadAlliances" class="btn btn-default"><i class="glyphicon glyphicon glyphicon-star"></i> Alliances</button>
+                </div>
+                <div class="col-sm-6">
+                    <div style="float: right;">
+                        <button @click="downloadCSV" class="btn btn-primary"><i class="glyphicon glyphicon glyphicon-download-alt"></i> Download CSV</button>
+                    </div>
+                </div>
+                <br/><br/>
+                <vue-bootstrap-table
+                        :columns="columns"
+                        :values="values"
+                        :show-filter="showFilter"
+                        :show-column-picker="showPicker"
+                        :paginated="paginated"
+                        :page-size="pageSize"
+                        :default-order-column="defaultOrderColumn"
+                        :default-order-direction="defaultOrderDirection"
+                        :multi-column-sortable="multiColumnSortable"
+                >
+                </vue-bootstrap-table>
+            </div>            
+        </div>        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.js"></script>
+    <script src="vue-bootstrap-table.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
