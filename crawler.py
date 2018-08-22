@@ -18,6 +18,7 @@ MODIFIER_IDS = {
             95278082, # elebee hatizou
             95235307, # Takuya Gogiko
             95249176, # shu oisibb
+            2112087185, # SIGMA ARAMAKI
         ],
     },
     'corporation': {
@@ -55,11 +56,12 @@ def get_json(modifier_key, modifier_id, year, month):
             with urllib.request.urlopen(api_url) as url:
                 data = json.loads(url.read().decode())
         except urllib.error.HTTPError:
-            print("urllib.error.HTTPError: " + api_url)
+            print('urllib.error.HTTPError: ' + api_url)
             time.sleep(300)
             continue
 
         if len(data) <= 0:
+            print('Download: ' + api_url)
             break
 
         json_list.extend(data)
@@ -92,7 +94,7 @@ def main():
                 data = get_json(modifier_key, modifier_id, year, month)
                 if len(data) > 0:
                     with open(json_path, 'w', encoding='utf-8') as file:
-                        json.dump(data, file)
+                        json.dump(data, file, indent=4)
 
 if __name__ == '__main__':
     main()

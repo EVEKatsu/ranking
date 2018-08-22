@@ -24,6 +24,17 @@
                     </div>
                 </div>
                 <br/><br/>
+                <div class="col-sm-12">
+                    <div class="form-inline">
+                        <label class="checkbox-inline"><input @click="update" type="checkbox" value="0" v-model="killmailKeys"> Solo</label>
+                        <label class="checkbox-inline"><input @click="update" type="checkbox" value="1" v-model="killmailKeys"> Small Gangs</label>
+                        <label class="checkbox-inline"><input @click="update" type="checkbox" value="2" v-model="killmailKeys"> Brawlers</label>
+                        <label class="checkbox-inline"><input @click="update" type="checkbox" value="3" v-model="killmailKeys"> Big Fighters</label>
+                    </div>
+                </div>
+                
+                <br/>
+
                 <vue-bootstrap-table
                         :columns="columns"
                         :values="values"
@@ -36,10 +47,12 @@
                         :multi-column-sortable="multiColumnSortable"
                 >
                 </vue-bootstrap-table>
-            </div>            
-        </div>        
+            </div>
+        </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.js"></script>
+    <script src="vue-material-checkbox.js"></script>
     <script src="vue-bootstrap-table.js"></script>
     <script src="app.js"></script>
 </body>

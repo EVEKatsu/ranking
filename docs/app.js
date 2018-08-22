@@ -1,20 +1,72 @@
 //Vue.config.debug = true;
 //Vue.config.devtools = true;
 
+const IMAGE_URL = "https://evekatsu.github.io/data/";
+const ZKILLBOARD_URL = "https://zkillboard.com/";
 
-MODIFIERS = {
-    "character": {
-        "singular": "character",
+const CHARACTER = 0;
+const CORPORATION = 1;
+const ALLIANCE = 2;
+const PLAYERS_KEYS_LENGTH = 3;
+const PLAYERS = [
+    {
+        "name": "character",
         "ext": ".jpg"
-    },
-    "corporation": {
+    }, {
+        "name": "corporation",
         "ext": ".png"
-    },
-    "alliance": {
+    }, {
+        "name": "alliance",
         "ext": ".png"
     }
-}
+];
+const PLAYERS_LIMIT = 99;
 
+const SOLO = 0;
+const SMALL_GANGS = 1;
+const BRAWLERS = 2;
+const BIG_FIGHTERS = 3;
+const KILLMAIL_KEYS_LENGTH = 4;
+const KILLMAIL_KEYS = [
+    {
+        "sort": function(a, b) {
+            return b.pointsDestroyed - a.pointsDestroyed;
+        }
+    },
+    {
+        "sort": function(a, b) {
+            return b.pointsDestroyed - a.pointsDestroyed;
+        }
+    },
+    {
+        "sort": function(a, b) {
+            return b.shipsDestroyed - a.shipsDestroyed;
+        }
+    },
+    {
+        "sort": function(a, b) {
+            return b.iskDestroyed - a.iskDestroyed;
+        }
+    }
+]
+
+const SHARELINK_TOKEN = ",";
+
+const SHIPS_DESTROYED = 0;
+const SHIPS_LOST = 1;
+const POINTS_DESTROYED = 2;
+const POINTS_LOST = 3;
+const ISK_DESTROYED = 4;
+const ISK_LOST = 5;
+
+const SHIP_VALUES_NAMES = [
+    "shipsDestroyed",
+    "shipsLost",
+    "pointsDestroyed",
+    "pointsLost",
+    "iskDestroyed",
+    "iskLost"
+];
 
 function getParameters() {
     var params = {};
@@ -28,27 +80,25 @@ function getParameters() {
     return params
 }
 
-var xmlHttpRequest = new XMLHttpRequest();
-xmlHttpRequest.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        if (this.response) {
-            initialize(JSON.parse(this.response));
-        }
-    }
-}
+const URL_PARAMS = getParameters();
 
-var params = getParameters();
-var date = params["date"].split("-");
-var DATE_URL = "year/" + date[0] + "/month/" + date[1] + "/";
+var date = URL_PARAMS["date"].split("-");
+const DATE_URL = "year/" + date[0] + "/month/" + date[1] + "/";
 
-xmlHttpRequest.open("GET", date[0] + "/" + date[1] + "/aggregate.json", true);
-xmlHttpRequest.responseText = "json";
-xmlHttpRequest.send(null);
+document.getElementById("title").innerText += " " + URL_PARAMS["date"];
+document.title += " " + URL_PARAMS["date"];
 
-document.getElementById("title").innerText += " " + params["date"];
-document.title += " " + params["date"];
+$.getJSON(date[0] + "/" + date[1] + "/players.min.json", function(players) {
+    $.getJSON(date[0] + "/" + date[1] + "/players_information.json", function(playersInformation) {
+        initialize(players, playersInformation);
+    }).fail(function() {
+        alert("Error: players_information.json");
+    });
+}).fail(function() {
+    alert("Error: players.min.json");
+});
 
-function initialize(aggregate) {
+function initialize(players, playersInformation) {
     var getEfficiency = function(destroyed, lost) {
         var efficiency = destroyed / (destroyed + lost) * 100;
         return Math.floor(efficiency * 10) / 10;
@@ -63,35 +113,106 @@ function initialize(aggregate) {
         }
     };
 
+    var playerKey = CHARACTER;
+    if (URL_PARAMS["p"] !== undefined) {
+        var key = Number(URL_PARAMS["p"]);
+        if (key >= 0 && key < PLAYERS_KEYS_LENGTH) {
+            playerKey = key;
+        }
+    }
+    var playerKeyName = PLAYERS[playerKey]["name"];
+
+    var killmailKeys = [];
+    if (URL_PARAMS["k"] === undefined) {
+        for (var i = 0; i < KILLMAIL_KEYS_LENGTH; i++) {
+            killmailKeys.push(String(i));
+        }
+    } else {
+        killmailKeys = URL_PARAMS["k"].split(SHARELINK_TOKEN).filter(function(e) {
+            return Number(e) >= 0 && Number(e) < KILLMAIL_KEYS_LENGTH;
+        });
+    }
+
+    var loadValues = function(killmailKeys) {
+        var items = {};
+
+        killmailKeys.forEach(function(killmailKey) {
+            players[playerKey][killmailKey].forEach(function(player) {
+                var playerId = player[0];
+                var ships = player[1];
+                var shipValues = Array(SHIP_VALUES_NAMES.length).fill(0);
+                
+                for (var i = 0; i < ships.length; i++) {
+                    var shipId = ships[i][0];
+                    var values = ships[i][1];
+
+                    for (var j = 0; j < values.length; j++) {
+                        shipValues[j] += values[j];
+                    }
+                }
+
+                if (!items[playerId]) {
+                    items[playerId] = {};
+
+                    for (var i = 0; i < SHIP_VALUES_NAMES.length; i++) {
+                        items[playerId][SHIP_VALUES_NAMES[i]] = 0;
+                    }
+                }
+
+                item = items[playerId];
+                for (var i = 0; i < SHIP_VALUES_NAMES.length; i++) {
+                    item[SHIP_VALUES_NAMES[i]] += shipValues[i];
+                }
+            });
+        });
+
+        var values = [];
+        for (playerId in items) {
+            var item = items[playerId];
+            item["id"] = playerId;
+            values.push(item);
+        }
+
+        if (killmailKeys.length == 1) {
+            values.sort(KILLMAIL_KEYS[Number(killmailKeys[0])]["sort"]);
+        } else {
+            values.sort(function(a, b) { return b.shipsDestroyed - a.shipsDestroyed });            
+        }
+
+        resultValues = []
+        for (var i = 0; i < values.length; i++) {
+            if (i >= PLAYERS_LIMIT) {
+                break;
+            }
+            value = values[i];
+            value["rank"] = i + 1;
+
+            value["shipsEfficiency"] = getEfficiency(value["shipsDestroyed"], value["shipsLost"]);
+            value["lskEfficiency"] = getEfficiency(value["pointsDestroyed"], value["pointsLost"]);
+            value["pointsEfficiency"] = getEfficiency(value["iskDestroyed"], value["iskLost"])
+
+            info = playersInformation[playerKeyName][value["id"]];
+            value["name"] = info["name"];
+            if (info["corporation_id"] || playerKey == CORPORATION) {
+                var corporationId = playerKey == CORPORATION ? value["id"] : info["corporation_id"];
+                value["ctickerText"] = "[" + playersInformation["corporation"][corporationId]["ticker"] + "]";
+            }
+
+            if (info["alliance_id"] || playerKey == ALLIANCE) {
+                var alliance_id = playerKey == ALLIANCE ? value["id"] : info["alliance_id"];
+                value["atickerText"] = "<" + playersInformation["alliance"][alliance_id]["ticker"] + ">";
+            }
+
+            resultValues.push(value);
+        }
+
+        return resultValues;
+    };
+
     var renderISK = function(colname, entry) {
         var value = entry[colname].toFixed(0);
         return String(value).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     };
-    
-
-    for (var key in aggregate) {
-        for(var i in aggregate[key]) {
-            item = aggregate[key][i];
-            item["id"] = i;
-            item["modifier"] = key;
-
-            item["ships_efficiency"] = getEfficiency(item["ships_destroyed"], item["ships_lost"]);
-            item["lsk_efficiency"] = getEfficiency(item["isk_destroyed"], item["isk_lost"]);
-            item["points_efficiency"] = getEfficiency(item["points_destroyed"], item["points_lost"]);
-
-            item["image_path"] = "images/" + key + "/" + i + MODIFIERS[key]["ext"]; 
-    
-            if (item["corporation_id"] || key == "corporation") {
-                var corporation_id = key == "corporation" ? i : item["corporation_id"];
-                item["cticker_text"] = "[" + aggregate["corporation"][corporation_id]["ticker"] + "]";
-            }
-    
-            if (item["alliance_id"] || key == "alliance") {
-                var alliance_id = key == "alliance" ? i : item["alliance_id"];
-                item["aticker_text"] = "<" + aggregate["alliance"][alliance_id]["ticker"] + ">";
-            }
-        }
-    }
 
     return new Vue({
         el: "#app",
@@ -103,17 +224,27 @@ function initialize(aggregate) {
             showPicker: true,
             paginated: false,
             pageSize: 100,
-            defaultOrderColumn: "ships_destroyed",
-            defaultOrderDirection: false,
+            defaultOrderColumn: "rank",
+            defaultOrderDirection: true,
             multiColumnSortable: true,
+            killmailKeys: killmailKeys,
+            values: loadValues(killmailKeys),
             columns: [
+                {
+                    title: "",
+                    name: "rank",
+                    visible: true,
+                    editable: false,
+                    sortable: true
+                },
                 {
                     title: "Name",
                     name: "name",
                     cellstyle: "column_align_left",
                     renderfunction: function (colname, entry) {
-                        var img = '<img src="' + entry["image_path"] + '" width="32">';
-                        var url = "https://zkillboard.com/" + entry["modifier"] + "/" + entry["id"] + "/";
+                        var image_path = IMAGE_URL + playerKeyName + "/" + entry["id"] + "_32" + PLAYERS[playerKey]["ext"];
+                        var img = '<img src="' + image_path + '">';
+                        var url = ZKILLBOARD_URL + playerKeyName + "/" + entry["id"] + "/top/";
                         return img + ' <a href="' + url + DATE_URL + '">' + entry[colname] + "</a>";
                     },
                     visible: true,
@@ -123,28 +254,27 @@ function initialize(aggregate) {
                 {
                     title: "ID",
                     name: "id",
-                    cellstyle: "column_align_left",
                     visible: false,
                     editable: false,
                     sortable: false
                 },
                 {
                     title: "Ships(+)",
-                    name: "ships_destroyed",
+                    name: "shipsDestroyed",
                     visible: true,
                     editable: false,
                     sortable: true
                 },
                 {
                     title: "Ships(-)",
-                    name: "ships_lost",
+                    name: "shipsLost",
                     visible: true,
                     editable: false,
                     sortable: true
                 },
                 {
                     title: "Ships(%)",
-                    name: "ships_efficiency",
+                    name: "shipsEfficiency",
                     renderfunction: renderEfficiency,
                     visible: false,
                     editable: false,
@@ -152,7 +282,7 @@ function initialize(aggregate) {
                 },
                 {
                     title: "ISK(+)",
-                    name: "isk_destroyed",
+                    name: "iskDestroyed",
                     renderfunction: renderISK,
                     visible: true,
                     editable: false,
@@ -160,7 +290,7 @@ function initialize(aggregate) {
                 },
                 {
                     title: "ISK(-)",
-                    name: "isk_lost",
+                    name: "iskLost",
                     renderfunction: renderISK,
                     visible: true,
                     editable: false,
@@ -168,7 +298,7 @@ function initialize(aggregate) {
                 },
                 {
                     title: "ISK(%)",
-                    name: "lsk_efficiency",
+                    name: "lskEfficiency",
                     renderfunction: renderEfficiency,
                     visible: false,
                     editable: false,
@@ -176,21 +306,21 @@ function initialize(aggregate) {
                 },
                 {
                     title: "Points(+)",
-                    name: "points_destroyed",
+                    name: "pointsDestroyed",
                     visible: true,
                     editable: false,
                     sortable: true
                 },
                 {
                     title: "Points(-)",
-                    name: "points_lost",
+                    name: "pointsLost",
                     visible: true,
                     editable: false,
                     sortable: true
                 },
                 {
                     title: "Points(%)",
-                    name: "points_efficiency",
+                    name: "pointsEfficiency",
                     renderfunction: renderEfficiency,
                     visible: false,
                     editable: false,
@@ -198,7 +328,7 @@ function initialize(aggregate) {
                 },
                 {
                     title: "CTicker",
-                    name: "cticker_text",
+                    name: "ctickerText",
                     cellstyle: "column_align_left",
                     visible: true,
                     editable: false,
@@ -206,27 +336,42 @@ function initialize(aggregate) {
                 },
                 {
                     title: "ATicker",
-                    name: "aticker_text",
+                    name: "atickerText",
                     cellstyle: "column_align_left",
                     visible: true,
                     editable: false,
                     sortable: true
                 }
-            ],
-            values: Object.values(aggregate["character"])
+            ]
         },
         methods: {
-            loadCharacters: function() {
+            update: function() {
+                playerKeyName = PLAYERS[playerKey]["name"];
+
+                var url = "?date=" + URL_PARAMS["date"];
+                if (playerKey != CHARACTER) {
+                    url += "&p=" + playerKey;
+                }
+                var length = this.killmailKeys.length;
+                if (length != KILLMAIL_KEYS_LENGTH && length != 0) {
+                    url += "&k=" + this.killmailKeys.join(",");
+                }
+                window.history.pushState(null, null, url);
+
                 this.values.splice(0, this.values.length);
-                Array.prototype.push.apply(this.values, Object.values(aggregate["character"]));
+                Array.prototype.push.apply(this.values, loadValues(this.killmailKeys));
+            },
+            loadCharacters: function() {
+                playerKey = CHARACTER;
+                this.update();
             },
             loadCorporations: function() {
-                this.values.splice(0, this.values.length);
-                Array.prototype.push.apply(this.values, Object.values(aggregate["corporation"]));
+                playerKey = CORPORATION;
+                this.update();
             },
             loadAlliances: function () {
-                this.values.splice(0, this.values.length);
-                Array.prototype.push.apply(this.values, Object.values(aggregate["alliance"]));
+                playerKey = ALLIANCE;
+                this.update();
             },
             downloadCSV: function() {
                 var csv = [];
