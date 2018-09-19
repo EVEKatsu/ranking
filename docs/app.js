@@ -88,7 +88,7 @@ if (document.location.search) {
     var date = URL_PARAMS["date"].split("-");
     DATE_URL = "year/" + date[0] + "/month/" + date[1] + "/";
 
-    document.getElementById("title").getElementsByTagName("a")[0].innerText += " " + URL_PARAMS["date"];
+    document.getElementById("title").getElementsByTagName("a")[0].innerText += " for the " + URL_PARAMS["date"];
     document.title += " for the " + URL_PARAMS["date"];
 
     $.getJSON(date[0] + "/" + date[1] + "/players.min.json", function(players) {
