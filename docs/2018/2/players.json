@@ -1,0 +1,20 @@
+{
+    "character": {
+        "solo": {},
+        "small_gangs": {},
+        "brawlers": {},
+        "big_fighters": {}
+    },
+    "corporation": {
+        "solo": {},
+        "small_gangs": {},
+        "brawlers": {},
+        "big_fighters": {}
+    },
+    "alliance": {
+        "solo": {},
+        "small_gangs": {},
+        "brawlers": {},
+        "big_fighters": {}
+    }
+}

@@ -10,8 +10,14 @@
 </head>
 <body>
     <div class="container-fluid">
+        <div style="margin-top: 20px; margin-bottom: 20px">
+            <a href="https://evekatsu.github.io/ad/" class="evekatsu-ad" target="_blank" data-only-banner="true"></a>
+            <script src="https://evekatsu.github.io/ad/widget.js"></script>
+        </div>
+        <hr />
+
         <div id="app">
-            <h1 id="title">Ranking the Japanese players for the</h1>
+            <h1 id="title"><a href="/">Ranking the Japanese players</a></h1>
             <div class="row">
                 <div class="col-sm-6">
                     <button @click="loadCharacters" class="btn btn-default"><i class="glyphicon glyphicon-user"></i> Characters</button>
@@ -50,6 +56,7 @@
             </div>
         </div>
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.js"></script>
     <script src="vue-material-checkbox.js"></script>

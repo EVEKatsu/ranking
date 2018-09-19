@@ -68,6 +68,9 @@ const SHIP_VALUES_NAMES = [
     "iskLost"
 ];
 
+var URL_PARAMS;
+var DATE_URL;
+
 function getParameters() {
     var params = {};
 
@@ -80,23 +83,48 @@ function getParameters() {
     return params
 }
 
-const URL_PARAMS = getParameters();
+if (document.location.search) {
+    URL_PARAMS = getParameters();
+    var date = URL_PARAMS["date"].split("-");
+    DATE_URL = "year/" + date[0] + "/month/" + date[1] + "/";
 
-var date = URL_PARAMS["date"].split("-");
-const DATE_URL = "year/" + date[0] + "/month/" + date[1] + "/";
+    document.getElementById("title").getElementsByTagName("a")[0].innerText += " " + URL_PARAMS["date"];
+    document.title += " for the " + URL_PARAMS["date"];
 
-document.getElementById("title").innerText += " " + URL_PARAMS["date"];
-document.title += " " + URL_PARAMS["date"];
-
-$.getJSON(date[0] + "/" + date[1] + "/players.min.json", function(players) {
-    $.getJSON(date[0] + "/" + date[1] + "/players_information.json", function(playersInformation) {
-        initialize(players, playersInformation);
+    $.getJSON(date[0] + "/" + date[1] + "/players.min.json", function(players) {
+        $.getJSON(date[0] + "/" + date[1] + "/players_information.json", function(playersInformation) {
+            initialize(players, playersInformation);
+        }).fail(function() {
+            alert("Error: players_information.json");
+        });
     }).fail(function() {
-        alert("Error: players_information.json");
+        alert("Error: players.min.json");
     });
-}).fail(function() {
-    alert("Error: players.min.json");
-});
+} else {
+    document.getElementById("app").remove();
+    var parent = document.getElementsByClassName("container-fluid")[0];
+    parent.style.fontSize = "140%";
+
+    var appendList = function(year, until) {
+        var h2 = document.createElement("h2");
+        h2.innerText = year;
+        parent.appendChild(h2);
+
+        var ul = document.createElement("ul");
+        for (var i = 1; i <= until; i++) {
+            var date = year + "-" + i;
+            var li = document.createElement("ul");
+            li.innerHTML = '<a href="?date=' + date+ '">' + date + '</a>'
+            ul.appendChild(li);
+        }
+        parent.appendChild(ul);
+    }
+
+    appendList("2017", "12");
+    appendList("2018", "8");
+    
+    parent.appendChild(document.createElement("hr"));
+}
 
 function initialize(players, playersInformation) {
     var getEfficiency = function(destroyed, lost) {

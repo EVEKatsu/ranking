@@ -26,6 +26,7 @@ MODIFIER_IDS = {
             98418839, # NACHO Battle Pixies
             98217414, # The Far East Starfleet Academy
             98476559, # C8N8O16
+            98463585, # Night's Paladins
             98450869, # GAMILAS Security and Logistic Service
         ],
     },
@@ -55,6 +56,7 @@ def get_json(modifier_key, modifier_id, year, month):
         try:
             with urllib.request.urlopen(api_url) as url:
                 data = json.loads(url.read().decode())
+            time.sleep(10)
         except urllib.error.HTTPError:
             print('urllib.error.HTTPError: ' + api_url)
             time.sleep(300)
