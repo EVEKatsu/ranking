@@ -121,7 +121,7 @@ if (document.location.search) {
     }
 
     appendList("2017", "12");
-    appendList("2018", "8");
+    appendList("2018", "9");
     
     parent.appendChild(document.createElement("hr"));
 }
