@@ -1,6 +1,8 @@
 import sys
 import os
+
 import json
+import hjson
 from collections import OrderedDict
 
 
@@ -178,21 +180,22 @@ def download(limit_players_keys, result_players):
 def main():
     year = str(int(sys.argv[1]))
     month = str(int(sys.argv[2]))
-
-    for key in PLAYERS.keys():
-        target_players[key] = []
-        result_players[key] = {}
-
     base_path = os.path.join(ROOT_PATH, year, month)
-    for key in PLAYERS.keys():
-        for filename in os.listdir(os.path.join(base_path, key)):
-            player_id, ext = os.path.splitext(filename)
-            target_players[key].append(int(player_id))
 
-            with open(os.path.join(base_path, key, filename), 'r') as file:
-                for killmail in json.load(file):
-                    if killmail['killmail_id'] not in killmails:
-                        killmails[killmail['killmail_id']] = killmail
+    global target_players
+    with open('target_players.hjson', 'r') as file:
+        target_players = hjson.load(file)
+
+    from pymongo import MongoClient
+    found_killmails = MongoClient('localhost:27017')['evekatsu_ranking']['killmails'].find({
+        'killmail_time': {
+            '$gte': '{0}-{1:02d}-01T00:00:00Z'.format(year, int(month)),
+            '$lt':  '{0}-{1:02d}-01T00:00:00Z'.format(year, int(month) % 12 + 1),
+        }
+    })
+
+    for killmail in found_killmails:
+        killmails[killmail['killmail_id']] = killmail
 
     for player_key in PLAYERS.keys():
         result_players[player_key] = OrderedDict()
@@ -272,7 +275,6 @@ def main():
         write('players.min.json', compression_players)
 
     write_json('players_information.json', download(limit_players_keys, result_players))
-
 
 if __name__ == '__main__':
     main()

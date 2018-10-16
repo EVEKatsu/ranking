@@ -1,0 +1,28 @@
+{
+    "character": [
+        94097177, # Lehs Shel
+        94570608, # may tenth
+        1642815872, # Rancer Apocalypse
+        96224663, # Katana Masen
+        93658049, # Isana Izanagi
+        92851348, # saya K
+        95278082, # elebee hatizou
+        95235307, # Takuya Gogiko
+        95249176, # shu oisibb
+        2112087185, # SIGMA ARAMAKI
+        90757686, # Nendo Yama
+    ],
+    "corporation": [
+        98418839, # NACHO Battle Pixies
+        98217414, # The Far East Starfleet Academy
+        98476559, # C8N8O16
+        98463585, # Night's Paladins
+        98450869, # GAMILAS Security and Logistic Service
+        98499913, # Soyokaze Cosmos Service
+        98574865, # Platinum Sensitivity
+    ],
+    "alliance": [
+        99001954, # Caladrius Alliance
+        99006138, # SAMURAI SOUL'd OUT
+    ],
+}
