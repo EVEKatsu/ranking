@@ -120,8 +120,18 @@ if (document.location.search) {
         parent.appendChild(ul);
     }
 
-    appendList("2017", "12");
-    appendList("2018", "9");
+    var nowDate = new Date();
+    for (var year = 2017; year <= nowDate.getFullYear(); year++) {
+        var month = 12;
+        if (year == nowDate.getFullYear()) {
+            month = nowDate.getMonth();
+            if (nowDate.getDate() < 10) {
+                month -= 1;
+            }
+        }
+
+        appendList(year.toString(), month.toString());
+    }
     
     parent.appendChild(document.createElement("hr"));
 }
