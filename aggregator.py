@@ -181,16 +181,23 @@ def main():
     year = str(int(sys.argv[1]))
     month = str(int(sys.argv[2]))
     base_path = os.path.join(ROOT_PATH, year, month)
+    os.makedirs(base_path, exist_ok=True)
 
     global target_players
     with open('target_players.hjson', 'r') as file:
         target_players = hjson.load(file)
 
+    next_year = int(year)
+    next_month = int(month) + 1
+    if next_month > 12:
+        next_year += 1
+        next_month = 1
+
     from pymongo import MongoClient
     found_killmails = MongoClient('localhost:27017')['evekatsu_ranking']['killmails'].find({
         'killmail_time': {
             '$gte': '{0}-{1:02d}-01T00:00:00Z'.format(year, int(month)),
-            '$lt':  '{0}-{1:02d}-01T00:00:00Z'.format(year, int(month) % 12 + 1),
+            '$lt':  '{0}-{1:02d}-01T00:00:00Z'.format(next_year, next_month),
         }
     })
 
