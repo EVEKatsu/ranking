@@ -2122,11 +2122,11 @@
                     },
                     "29340": {
                         "ships_destroyed": 0,
-                        "ships_lost": 1,
+                        "ships_lost": 2,
                         "points_destroyed": 0,
-                        "points_lost": 2,
+                        "points_lost": 7,
                         "isk_destroyed": 0,
-                        "isk_lost": 107207418.97
+                        "isk_lost": 222703819.84
                     },
                     "17920": {
                         "ships_destroyed": 0,
@@ -3428,6 +3428,14 @@
                         "points_lost": 0,
                         "isk_destroyed": 3702683.16,
                         "isk_lost": 0
+                    },
+                    "622": {
+                        "ships_destroyed": 0,
+                        "ships_lost": 1,
+                        "points_destroyed": 0,
+                        "points_lost": 2,
+                        "isk_destroyed": 0,
+                        "isk_lost": 23999296.1
                     }
                 },
                 "corporation_id": 98476559,
@@ -5334,11 +5342,11 @@
                     },
                     "670": {
                         "ships_destroyed": 11,
-                        "ships_lost": 21,
+                        "ships_lost": 22,
                         "points_destroyed": 11,
-                        "points_lost": 21,
+                        "points_lost": 22,
                         "isk_destroyed": 101221941.85,
-                        "isk_lost": 1312138992.72
+                        "isk_lost": 1312148992.72
                     },
                     "17703": {
                         "ships_destroyed": 0,
@@ -9152,11 +9160,11 @@
             "95799510": {
                 "ships": {
                     "670": {
-                        "ships_destroyed": 40,
+                        "ships_destroyed": 41,
                         "ships_lost": 6,
-                        "points_destroyed": 40,
+                        "points_destroyed": 41,
                         "points_lost": 6,
-                        "isk_destroyed": 1207763901.8799999,
+                        "isk_destroyed": 1207773901.8799999,
                         "isk_lost": 60000
                     },
                     "32878": {
@@ -9216,11 +9224,11 @@
                         "isk_lost": 0
                     },
                     "17843": {
-                        "ships_destroyed": 4,
+                        "ships_destroyed": 5,
                         "ships_lost": 0,
-                        "points_destroyed": 4,
+                        "points_destroyed": 5,
                         "points_lost": 0,
-                        "isk_destroyed": 293662869.09000003,
+                        "isk_destroyed": 421526852.09000003,
                         "isk_lost": 0
                     },
                     "35826": {
@@ -9296,11 +9304,11 @@
                         "isk_lost": 0
                     },
                     "621": {
-                        "ships_destroyed": 4,
+                        "ships_destroyed": 6,
                         "ships_lost": 1,
-                        "points_destroyed": 4,
+                        "points_destroyed": 6,
                         "points_lost": 1,
-                        "isk_destroyed": 124811312.77,
+                        "isk_destroyed": 193545635.14,
                         "isk_lost": 27578069.66
                     },
                     "19720": {
@@ -9416,11 +9424,11 @@
                         "isk_lost": 0
                     },
                     "608": {
-                        "ships_destroyed": 3,
+                        "ships_destroyed": 4,
                         "ships_lost": 0,
-                        "points_destroyed": 3,
+                        "points_destroyed": 4,
                         "points_lost": 0,
-                        "isk_destroyed": 13278752.0,
+                        "isk_destroyed": 15835100.54,
                         "isk_lost": 0
                     },
                     "28661": {
@@ -9600,11 +9608,11 @@
                         "isk_lost": 0
                     },
                     "24694": {
-                        "ships_destroyed": 4,
+                        "ships_destroyed": 5,
                         "ships_lost": 0,
-                        "points_destroyed": 4,
+                        "points_destroyed": 5,
                         "points_lost": 0,
-                        "isk_destroyed": 601828091.2,
+                        "isk_destroyed": 773000190.7800001,
                         "isk_lost": 0
                     },
                     "16242": {
@@ -9629,6 +9637,30 @@
                         "points_destroyed": 1,
                         "points_lost": 0,
                         "isk_destroyed": 9437124.36,
+                        "isk_lost": 0
+                    },
+                    "24698": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 73729697.4,
+                        "isk_lost": 0
+                    },
+                    "620": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 14248655.57,
+                        "isk_lost": 0
+                    },
+                    "583": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 2108113.43,
                         "isk_lost": 0
                     }
                 },
@@ -10447,6 +10479,14 @@
                         "points_destroyed": 1,
                         "points_lost": 0,
                         "isk_destroyed": 3875590592.2,
+                        "isk_lost": 0
+                    },
+                    "35825": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 523924344.3,
                         "isk_lost": 0
                     }
                 },
@@ -17333,11 +17373,11 @@
                     },
                     "29340": {
                         "ships_destroyed": 0,
-                        "ships_lost": 1,
+                        "ships_lost": 2,
                         "points_destroyed": 0,
-                        "points_lost": 2,
+                        "points_lost": 7,
                         "isk_destroyed": 0,
-                        "isk_lost": 107207418.97
+                        "isk_lost": 222703819.84
                     },
                     "17920": {
                         "ships_destroyed": 0,
@@ -18369,6 +18409,14 @@
                         "points_lost": 0,
                         "isk_destroyed": 3702683.16,
                         "isk_lost": 0
+                    },
+                    "622": {
+                        "ships_destroyed": 0,
+                        "ships_lost": 1,
+                        "points_destroyed": 0,
+                        "points_lost": 2,
+                        "isk_destroyed": 0,
+                        "isk_lost": 23999296.1
                     }
                 },
                 "alliance_id": 1354830081
@@ -19223,11 +19271,11 @@
                     },
                     "670": {
                         "ships_destroyed": 11,
-                        "ships_lost": 21,
+                        "ships_lost": 22,
                         "points_destroyed": 11,
-                        "points_lost": 21,
+                        "points_lost": 22,
                         "isk_destroyed": 101221941.85,
-                        "isk_lost": 1312138992.72
+                        "isk_lost": 1312148992.72
                     },
                     "17703": {
                         "ships_destroyed": 0,
@@ -20606,19 +20654,19 @@
             "98476559": {
                 "ships": {
                     "621": {
-                        "ships_destroyed": 31,
+                        "ships_destroyed": 33,
                         "ships_lost": 1,
-                        "points_destroyed": 31,
+                        "points_destroyed": 33,
                         "points_lost": 1,
-                        "isk_destroyed": 954560743.3799999,
+                        "isk_destroyed": 1023295065.7499999,
                         "isk_lost": 27578069.66
                     },
                     "17843": {
-                        "ships_destroyed": 13,
+                        "ships_destroyed": 14,
                         "ships_lost": 0,
-                        "points_destroyed": 13,
+                        "points_destroyed": 14,
                         "points_lost": 0,
-                        "isk_destroyed": 1171843560.6399999,
+                        "isk_destroyed": 1299707543.6399999,
                         "isk_lost": 0
                     },
                     "657": {
@@ -20710,11 +20758,11 @@
                         "isk_lost": 0
                     },
                     "670": {
-                        "ships_destroyed": 100,
+                        "ships_destroyed": 101,
                         "ships_lost": 23,
-                        "points_destroyed": 100,
+                        "points_destroyed": 101,
                         "points_lost": 23,
-                        "isk_destroyed": 1789363331.71,
+                        "isk_destroyed": 1789373331.71,
                         "isk_lost": 8334407.46
                     },
                     "32878": {
@@ -21022,11 +21070,11 @@
                         "isk_lost": 0
                     },
                     "620": {
-                        "ships_destroyed": 5,
+                        "ships_destroyed": 6,
                         "ships_lost": 0,
-                        "points_destroyed": 5,
+                        "points_destroyed": 6,
                         "points_lost": 0,
-                        "isk_destroyed": 87965519.51,
+                        "isk_destroyed": 102214175.08000001,
                         "isk_lost": 0
                     },
                     "17715": {
@@ -21302,11 +21350,11 @@
                         "isk_lost": 0
                     },
                     "608": {
-                        "ships_destroyed": 4,
+                        "ships_destroyed": 5,
                         "ships_lost": 0,
-                        "points_destroyed": 4,
+                        "points_destroyed": 5,
                         "points_lost": 0,
-                        "isk_destroyed": 15779567.37,
+                        "isk_destroyed": 18335915.91,
                         "isk_lost": 0
                     },
                     "28661": {
@@ -21334,11 +21382,11 @@
                         "isk_lost": 0
                     },
                     "583": {
-                        "ships_destroyed": 1,
+                        "ships_destroyed": 2,
                         "ships_lost": 0,
-                        "points_destroyed": 1,
+                        "points_destroyed": 2,
                         "points_lost": 0,
-                        "isk_destroyed": 739816.9,
+                        "isk_destroyed": 2847930.33,
                         "isk_lost": 0
                     },
                     "11971": {
@@ -21510,11 +21558,11 @@
                         "isk_lost": 0
                     },
                     "24694": {
-                        "ships_destroyed": 4,
+                        "ships_destroyed": 5,
                         "ships_lost": 0,
-                        "points_destroyed": 4,
+                        "points_destroyed": 5,
                         "points_lost": 0,
-                        "isk_destroyed": 601828091.2,
+                        "isk_destroyed": 773000190.7800001,
                         "isk_lost": 0
                     },
                     "632": {
@@ -21531,6 +21579,22 @@
                         "points_destroyed": 1,
                         "points_lost": 0,
                         "isk_destroyed": 9437124.36,
+                        "isk_lost": 0
+                    },
+                    "35825": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 523924344.3,
+                        "isk_lost": 0
+                    },
+                    "24698": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 73729697.4,
                         "isk_lost": 0
                     }
                 },
@@ -24708,11 +24772,11 @@
                     },
                     "29340": {
                         "ships_destroyed": 0,
-                        "ships_lost": 1,
+                        "ships_lost": 2,
                         "points_destroyed": 0,
-                        "points_lost": 2,
+                        "points_lost": 7,
                         "isk_destroyed": 0,
-                        "isk_lost": 107207418.97
+                        "isk_lost": 222703819.84
                     },
                     "17920": {
                         "ships_destroyed": 0,
@@ -25185,6 +25249,14 @@
                         "points_lost": 0,
                         "isk_destroyed": 3702683.16,
                         "isk_lost": 0
+                    },
+                    "622": {
+                        "ships_destroyed": 0,
+                        "ships_lost": 1,
+                        "points_destroyed": 0,
+                        "points_lost": 2,
+                        "isk_destroyed": 0,
+                        "isk_lost": 23999296.1
                     }
                 }
             },
@@ -25814,11 +25886,11 @@
                     },
                     "670": {
                         "ships_destroyed": 11,
-                        "ships_lost": 21,
+                        "ships_lost": 22,
                         "points_destroyed": 11,
-                        "points_lost": 21,
+                        "points_lost": 22,
                         "isk_destroyed": 101221941.85,
-                        "isk_lost": 1312138992.72
+                        "isk_lost": 1312148992.72
                     },
                     "17703": {
                         "ships_destroyed": 0,
@@ -27425,19 +27497,19 @@
             "1354830081": {
                 "ships": {
                     "621": {
-                        "ships_destroyed": 31,
+                        "ships_destroyed": 33,
                         "ships_lost": 1,
-                        "points_destroyed": 31,
+                        "points_destroyed": 33,
                         "points_lost": 1,
-                        "isk_destroyed": 954560743.3799999,
+                        "isk_destroyed": 1023295065.7499999,
                         "isk_lost": 27578069.66
                     },
                     "17843": {
-                        "ships_destroyed": 13,
+                        "ships_destroyed": 14,
                         "ships_lost": 0,
-                        "points_destroyed": 13,
+                        "points_destroyed": 14,
                         "points_lost": 0,
-                        "isk_destroyed": 1171843560.6399999,
+                        "isk_destroyed": 1299707543.6399999,
                         "isk_lost": 0
                     },
                     "657": {
@@ -27529,11 +27601,11 @@
                         "isk_lost": 0
                     },
                     "670": {
-                        "ships_destroyed": 100,
+                        "ships_destroyed": 101,
                         "ships_lost": 23,
-                        "points_destroyed": 100,
+                        "points_destroyed": 101,
                         "points_lost": 23,
-                        "isk_destroyed": 1789363331.71,
+                        "isk_destroyed": 1789373331.71,
                         "isk_lost": 8334407.46
                     },
                     "32878": {
@@ -27841,11 +27913,11 @@
                         "isk_lost": 0
                     },
                     "620": {
-                        "ships_destroyed": 5,
+                        "ships_destroyed": 6,
                         "ships_lost": 0,
-                        "points_destroyed": 5,
+                        "points_destroyed": 6,
                         "points_lost": 0,
-                        "isk_destroyed": 87965519.51,
+                        "isk_destroyed": 102214175.08000001,
                         "isk_lost": 0
                     },
                     "17715": {
@@ -28121,11 +28193,11 @@
                         "isk_lost": 0
                     },
                     "608": {
-                        "ships_destroyed": 4,
+                        "ships_destroyed": 5,
                         "ships_lost": 0,
-                        "points_destroyed": 4,
+                        "points_destroyed": 5,
                         "points_lost": 0,
-                        "isk_destroyed": 15779567.37,
+                        "isk_destroyed": 18335915.91,
                         "isk_lost": 0
                     },
                     "28661": {
@@ -28153,11 +28225,11 @@
                         "isk_lost": 0
                     },
                     "583": {
-                        "ships_destroyed": 1,
+                        "ships_destroyed": 2,
                         "ships_lost": 0,
-                        "points_destroyed": 1,
+                        "points_destroyed": 2,
                         "points_lost": 0,
-                        "isk_destroyed": 739816.9,
+                        "isk_destroyed": 2847930.33,
                         "isk_lost": 0
                     },
                     "11971": {
@@ -28329,11 +28401,11 @@
                         "isk_lost": 0
                     },
                     "24694": {
-                        "ships_destroyed": 4,
+                        "ships_destroyed": 5,
                         "ships_lost": 0,
-                        "points_destroyed": 4,
+                        "points_destroyed": 5,
                         "points_lost": 0,
-                        "isk_destroyed": 601828091.2,
+                        "isk_destroyed": 773000190.7800001,
                         "isk_lost": 0
                     },
                     "632": {
@@ -28350,6 +28422,22 @@
                         "points_destroyed": 1,
                         "points_lost": 0,
                         "isk_destroyed": 9437124.36,
+                        "isk_lost": 0
+                    },
+                    "35825": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 523924344.3,
+                        "isk_lost": 0
+                    },
+                    "24698": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 73729697.4,
                         "isk_lost": 0
                     }
                 }
