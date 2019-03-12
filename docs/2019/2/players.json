@@ -2,19 +2,151 @@
     "character": {
         "solo": {},
         "small_gangs": {},
-        "brawlers": {},
-        "big_fighters": {}
+        "brawlers": {
+            "94097177": {
+                "ships": {
+                    "20066": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 98765894.68,
+                        "isk_lost": 0
+                    },
+                    "16227": {
+                        "ships_destroyed": 8,
+                        "ships_lost": 0,
+                        "points_destroyed": 8,
+                        "points_lost": 0,
+                        "isk_destroyed": 582598714.05,
+                        "isk_lost": 0
+                    },
+                    "11961": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 474117277.54,
+                        "isk_lost": 0
+                    }
+                },
+                "corporation_id": 98407712,
+                "alliance_id": 1727758877
+            }
+        },
+        "big_fighters": {
+            "94097177": {
+                "ships": {
+                    "11985": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 308159619.64,
+                        "isk_lost": 0
+                    }
+                },
+                "corporation_id": 98407712,
+                "alliance_id": 1727758877
+            }
+        }
     },
     "corporation": {
         "solo": {},
         "small_gangs": {},
-        "brawlers": {},
-        "big_fighters": {}
+        "brawlers": {
+            "98407712": {
+                "ships": {
+                    "20066": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 98765894.68,
+                        "isk_lost": 0
+                    },
+                    "16227": {
+                        "ships_destroyed": 8,
+                        "ships_lost": 0,
+                        "points_destroyed": 8,
+                        "points_lost": 0,
+                        "isk_destroyed": 582598714.05,
+                        "isk_lost": 0
+                    },
+                    "11961": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 474117277.54,
+                        "isk_lost": 0
+                    }
+                },
+                "alliance_id": 1727758877
+            }
+        },
+        "big_fighters": {
+            "98407712": {
+                "ships": {
+                    "11985": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 308159619.64,
+                        "isk_lost": 0
+                    }
+                },
+                "alliance_id": 1727758877
+            }
+        }
     },
     "alliance": {
         "solo": {},
         "small_gangs": {},
-        "brawlers": {},
-        "big_fighters": {}
+        "brawlers": {
+            "1727758877": {
+                "ships": {
+                    "20066": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 98765894.68,
+                        "isk_lost": 0
+                    },
+                    "16227": {
+                        "ships_destroyed": 8,
+                        "ships_lost": 0,
+                        "points_destroyed": 8,
+                        "points_lost": 0,
+                        "isk_destroyed": 582598714.05,
+                        "isk_lost": 0
+                    },
+                    "11961": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 474117277.54,
+                        "isk_lost": 0
+                    }
+                }
+            }
+        },
+        "big_fighters": {
+            "1727758877": {
+                "ships": {
+                    "11985": {
+                        "ships_destroyed": 1,
+                        "ships_lost": 0,
+                        "points_destroyed": 1,
+                        "points_lost": 0,
+                        "isk_destroyed": 308159619.64,
+                        "isk_lost": 0
+                    }
+                }
+            }
+        }
     }
 }
